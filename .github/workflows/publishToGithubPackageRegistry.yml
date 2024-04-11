@@ -1,0 +1,20 @@
+name: Publish to Github Package Registry
+on:
+  workflow_dispatch:
+    branches:
+      - master #current latest version
+      - "v[1-9][0-9]+.x" #release branches with previous releases
+    # Inputs the workflow accepts.
+    inputs:
+      newPackageJsonVersion:
+        description: "The semver for the version you would like to publish"
+        required: true
+      releaseTitle:
+        description: "A short description to describe the release (do NOT include the version number here)"
+
+jobs:
+  test-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test step
+        run: echo "Test step run"
