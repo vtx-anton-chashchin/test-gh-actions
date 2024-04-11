@@ -22,4 +22,5 @@ jobs:
           text: ${{ github.ref_name }}
           regex: '^(master)|(v[1-9][0-9]*\.x)$'
       - name: Test step
+        if: ${{ steps.regex-match.outputs.match != '' }}
         run: echo "Test step run"
