@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
     branches:
       - master #current latest version
-      - "v[1-9][0-9]+.x" #release branches with previous releases
+      - 'v[1-9][0-9]+.x' #release branches with previous releases
     # Inputs the workflow accepts.
     inputs:
       newPackageJsonVersion:
