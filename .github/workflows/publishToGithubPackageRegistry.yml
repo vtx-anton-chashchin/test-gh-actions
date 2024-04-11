@@ -19,7 +19,7 @@ jobs:
       - uses: actions-ecosystem/action-regex-match@v2
         id: regex-match
         with:
-          text: ${{ GITHUB_HEAD_REF }}
+          text: ${{ github.ref_name }}
           regex: '^(master)|(v[1-9][0-9]*\.x)$'
       - name: Test step
         run: echo "Test step run"
