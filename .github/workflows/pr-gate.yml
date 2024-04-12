@@ -4,8 +4,8 @@ on:
   pull_request:
     branches:
       - master #current latest version
-      - "v[1-9][0-9]+.x" #release branches with previous releases
-      - "v[1-9][0-9]+-next" #next release branches
+      # - "v[1-9][0-9]+.x" #release branches with previous releases
+      # - "v[1-9][0-9]+-next" #next release branches
 
 jobs:
   test-job:
@@ -13,4 +13,4 @@ jobs:
     runs-on: "ubuntu-latest"
     steps:
       - name: Test step
-        run: echo 'Run test step'
+        run: exit 1
