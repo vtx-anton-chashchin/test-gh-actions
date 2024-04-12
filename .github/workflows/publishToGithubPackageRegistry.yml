@@ -27,9 +27,9 @@ jobs:
   #       run: echo "Test step run"
   branch-check:
     runs-on: ubuntu-latest
-    if: ${{ !startsWith(github.ref_name, 'release/') && github.ref_name != 'master' }}
     steps:
-      - run: |
+      - if: ${{ !startsWith(github.ref_name, 'release/') && github.ref_name != 'master' }}
+        run: |
           echo "${{ github.ref_name }} branch is not allowed to perform publish workflow"
           exit 1
   main-job:
