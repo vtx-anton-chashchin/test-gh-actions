@@ -13,4 +13,4 @@ jobs:
     runs-on: "ubuntu-latest"
     steps:
       - name: Test step
-        run: echo 'Run test step'
+        run: exit 1
