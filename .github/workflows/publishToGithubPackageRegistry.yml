@@ -1,9 +1,6 @@
 name: Publish to Github Package Registry
 on:
   workflow_dispatch:
-    branches:
-      - master #current latest version
-      - "v[1-9][0-9]+.x" #release branches with previous releases
     # Inputs the workflow accepts.
     inputs:
       newPackageJsonVersion:
@@ -22,10 +19,11 @@ jobs:
           text: ${{ github.ref_name }}
           regex: '^(master)|(v[1-9][0-9]*\.x)$'
       - name: Test step 1
-        if: ${{ steps.regex-match.outputs.match != '' }}
-        run: echo "Test step run"
+        if: ${{ steps.regex-match.outputs.match == '' }}
+        run: |
+          echo "${{ github.ref_name }} branch is not allowed to perform publish workflow" 
+          exit 1
       - name: Test step 2
-        if: ${{ steps.regex-match.outputs.match != '' }}
         run: echo "Test step run"
   main-job:
     runs-on: ubuntu-latest
